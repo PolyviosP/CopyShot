@@ -10,7 +10,8 @@ namespace CopyShot
         Screenshot Photo = new Screenshot();
         private Point RectStartPoint;
         private Rectangle Rect = new Rectangle();
-        private Brush selectionBrush = new SolidBrush(Color.FromArgb(128, 72, 145, 220));
+        private Brush selectionBrush = new SolidBrush(Color.FromArgb(255, 0, 0, 0));//128, 72, 145, 220
+        private Brush FilterBrush = new SolidBrush(Color.FromArgb(100, 0, 0, 0));
 
         public DisplayImage()
         {
@@ -21,6 +22,7 @@ namespace CopyShot
         {
             pictureBox.Image = Image.FromFile(@".\Screenshots\Capture.jpg");
         }
+
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             RectStartPoint = e.Location;
@@ -44,6 +46,7 @@ namespace CopyShot
 
         private void pictureBox_Paint(object sender, PaintEventArgs e)
         {
+            EnableFilter(sender, e);
             if (pictureBox.Image != null)
             {
                 if (Rect != null && Rect.Width > 0 && Rect.Height > 0)
@@ -51,6 +54,15 @@ namespace CopyShot
                     e.Graphics.FillRectangle(selectionBrush, Rect);
                 }
             }
+        }
+        private void EnableFilter(object sender, PaintEventArgs e)
+        {
+
+            var size = Photo.GetResolution();
+            Rectangle Filter = new Rectangle(0, 0, size.Width, size.Height);
+            e.Graphics.FillRectangle(FilterBrush, Filter);
+
+            pictureBox.Invalidate();
         }
 
         private void DisplayImage_KeyPress(object sender, KeyPressEventArgs e)
@@ -73,6 +85,17 @@ namespace CopyShot
                 File.Delete(@".\Screenshots\Capture.jpg");
                 File.Delete(@".\Screenshots\FinalCapture.jpg");
                 
+            }
+        }
+
+        private void pictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (Rect.Contains(e.Location))
+                {
+                    Console.WriteLine("Right click");
+                }
             }
         }
     }

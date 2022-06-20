@@ -30,7 +30,10 @@ namespace CopyShot
                 System.Windows.MessageBox.Show(ex.Message);
             }
         }
-
+        public Size GetResolution()
+        {
+            return GetDisplayResolution();
+        }
         public void CaptureScreenshot()
         {
             try
