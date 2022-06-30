@@ -103,4 +103,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\IronOcr.Languages.Greek.2020.11.2\build\IronOcr.Languages.Greek.targets" Condition="Exists('..\packages\IronOcr.Languages.Greek.2020.11.2\build\IronOcr.Languages.Greek.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\IronOcr.Languages.Greek.2020.11.2\build\IronOcr.Languages.Greek.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IronOcr.Languages.Greek.2020.11.2\build\IronOcr.Languages.Greek.targets'))" />
+  </Target>
 </Project>

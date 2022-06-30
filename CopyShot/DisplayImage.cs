@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
 
@@ -46,12 +47,14 @@ namespace CopyShot
 
         private void pictureBox_Paint(object sender, PaintEventArgs e)
         {
+            
             EnableFilter(sender, e);
             if (pictureBox.Image != null)
             {
                 if (Rect != null && Rect.Width > 0 && Rect.Height > 0)
                 {
-                    e.Graphics.FillRectangle(selectionBrush, Rect);
+                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    e.Graphics.FillRectangle(selectionBrush, Rect); 
                 }
             }
         }
@@ -61,7 +64,7 @@ namespace CopyShot
             var size = Photo.GetResolution();
             Rectangle Filter = new Rectangle(0, 0, size.Width, size.Height);
             e.Graphics.FillRectangle(FilterBrush, Filter);
-
+            
             pictureBox.Invalidate();
         }
 
@@ -73,6 +76,7 @@ namespace CopyShot
                 pictureBox.Image.Dispose();
                 pictureBox.Image = null;
                 File.Delete(@".\Screenshots\Capture.jpg");
+                this.Dispose();
             }
             else if (e.KeyChar == 3)
             {
@@ -84,7 +88,7 @@ namespace CopyShot
                 pictureBox.Image = null;
                 File.Delete(@".\Screenshots\Capture.jpg");
                 File.Delete(@".\Screenshots\FinalCapture.jpg");
-                
+                this.Dispose();
             }
         }
 
@@ -96,6 +100,7 @@ namespace CopyShot
                 {
                     Console.WriteLine("Right click");
                 }
+                
             }
         }
     }

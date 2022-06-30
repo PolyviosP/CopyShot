@@ -10,6 +10,7 @@ namespace CopyShot
 {
     internal class Screenshot
     {
+        public string ImgText;
         public void CaptureScreenshotBox(string path, int x, int y, int width, int height)
         {
             try
@@ -60,11 +61,17 @@ namespace CopyShot
         {
             try
             {
-                IronTesseract IronOcr = new IronTesseract();
-                IronOcr.Language = OcrLanguage.English;
-                var Text = IronOcr.Read(path);
-                Clipboard.SetText(Text.Text);
-                Console.WriteLine(Text.Text);
+                var Ocr = new IronTesseract();
+                using (var Input = new OcrInput(path))
+                {
+                    //Input.Deskew();
+                    Ocr.Language = OcrLanguage.English;
+                    //Ocr.AddSecondaryLanguage(OcrLanguage.English);
+                    var Text = Ocr.Read(Input);
+                    Clipboard.SetText(Text.Text);
+                    ImgText = Text.Text;
+                    MessageBox.Show(Text.Text);
+                }
             }
             catch { }
         }

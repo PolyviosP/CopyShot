@@ -15,13 +15,21 @@ namespace CopyShot
 {
     public partial class Main : Form
     {
-        DisplayImage FormImage = new DisplayImage();
         Screenshot photo = new Screenshot();
+
         public Main()
         {
             InitializeComponent();
-            photo.CaptureScreenshot();
-            FormImage.Show();
+        }
+
+        private void Main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {  
+                photo.CaptureScreenshot();
+                DisplayImage FormImage = new DisplayImage();
+                FormImage.Show();
+            }
         }
     }
 }
