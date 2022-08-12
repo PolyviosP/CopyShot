@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using IronOcr;
-
 
 namespace CopyShot
 {
     internal class Screenshot
     {
-        public string ImgText;
         public void CaptureScreenshotBox(string path, int x, int y, int width, int height)
         {
             try
@@ -31,10 +30,12 @@ namespace CopyShot
                 System.Windows.MessageBox.Show(ex.Message);
             }
         }
+
         public Size GetResolution()
         {
             return GetDisplayResolution();
         }
+
         public void CaptureScreenshot()
         {
             try
@@ -57,24 +58,30 @@ namespace CopyShot
             }
         }
 
-        public void ConvertImageToText(string path)
+        public string ConvertImageToText(string path)
         {
+            string ImgText = "";
             try
             {
                 var Ocr = new IronTesseract();
                 using (var Input = new OcrInput(path))
                 {
                     //Input.Deskew();
-                    Ocr.Language = OcrLanguage.English;
-                    //Ocr.AddSecondaryLanguage(OcrLanguage.English);
+                    Ocr.Language = OcrLanguage.GreekBest;
+                    Ocr.AddSecondaryLanguage(OcrLanguage.EnglishBest);
                     var Text = Ocr.Read(Input);
-                    Clipboard.SetText(Text.Text);
                     ImgText = Text.Text;
-                    MessageBox.Show(Text.Text);
+                    return ImgText;
                 }
             }
-            catch { }
+            catch (FileNotFoundException){ return ImgText; }
+            catch 
+            {
+                MessageBox.Show("We can't convert the text!", "Copyshot", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return ImgText;
+            }
         }
+
 
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
         public static extern int GetDeviceCaps(IntPtr hDC, int nIndex);

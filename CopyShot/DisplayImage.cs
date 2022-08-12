@@ -2,13 +2,16 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CopyShot
 {
     public partial class DisplayImage : Form
     {
+
         Screenshot Photo = new Screenshot();
+
         private Point RectStartPoint;
         private Rectangle Rect = new Rectangle();
         private Brush selectionBrush = new SolidBrush(Color.FromArgb(255, 0, 0, 0));//128, 72, 145, 220
@@ -46,8 +49,7 @@ namespace CopyShot
         }
 
         private void pictureBox_Paint(object sender, PaintEventArgs e)
-        {
-            
+        {  
             EnableFilter(sender, e);
             if (pictureBox.Image != null)
             {
@@ -58,9 +60,9 @@ namespace CopyShot
                 }
             }
         }
+
         private void EnableFilter(object sender, PaintEventArgs e)
         {
-
             var size = Photo.GetResolution();
             Rectangle Filter = new Rectangle(0, 0, size.Width, size.Height);
             e.Graphics.FillRectangle(FilterBrush, Filter);
@@ -68,27 +70,34 @@ namespace CopyShot
             pictureBox.Invalidate();
         }
 
-        private void DisplayImage_KeyPress(object sender, KeyPressEventArgs e)
+        private async void DisplayImage_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Escape)
             {
                 this.Hide();
                 pictureBox.Image.Dispose();
                 pictureBox.Image = null;
-                File.Delete(@".\Screenshots\Capture.jpg");
+                //File.Delete(@".\Screenshots\Capture.jpg");
                 this.Dispose();
             }
             else if (e.KeyChar == 3)
             {
+                string text = "";
+                Main.mainform.ptB.Show();
                 this.Hide();
-                Photo.CaptureScreenshotBox(@".\Screenshots\FinalCapture.jpg", Rect.Location.X, Rect.Location.Y, Rect.Size.Width, Rect.Size.Height);
-                Photo.ConvertImageToText(@".\Screenshots\FinalCapture.jpg");
-                
+
+                await Task.Run(() => 
+                { 
+                    Photo.CaptureScreenshotBox(@".\Screenshots\FinalCapture.jpg", Rect.Location.X, Rect.Location.Y, Rect.Size.Width, Rect.Size.Height);
+                    text = Photo.ConvertImageToText(@".\Screenshots\FinalCapture.jpg");
+                });
+
+                //File.Delete(@".\Screenshots\Capture.jpg");
                 pictureBox.Image.Dispose();
                 pictureBox.Image = null;
-                File.Delete(@".\Screenshots\Capture.jpg");
-                File.Delete(@".\Screenshots\FinalCapture.jpg");
                 this.Dispose();
+                Main.mainform.rtb.Text = text;
+                Main.mainform.ptB.Hide();
             }
         }
 
