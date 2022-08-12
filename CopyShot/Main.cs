@@ -129,9 +129,14 @@ namespace CopyShot
 
         private async void ReadButton_Click(object sender, EventArgs e)
         {
+            string l = LanguageComboBox.Text;
+            string l2 = SecondLanguageComboBox.Text;
+            string text = "";
+
             pictureBox.Show();
-            await Task.Run(() => Photo.ConvertImageToText(@".\Screenshots\FinalCapture.jpg", Language[LanguageComboBox.Text], Language[SecondLanguageComboBox.Text]));
+            await Task.Run(() => text = Photo.ConvertImageToText(@".\Screenshots\FinalCapture.jpg", l, l2));
             pictureBox.Hide();
+            richTextBox.Text = text;
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
