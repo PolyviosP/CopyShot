@@ -1,5 +1,7 @@
-﻿using System;
+﻿using IronOcr;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,6 +15,8 @@ namespace CopyShot
         public static Main mainform;
         public RichTextBox rtb;
         public PictureBox ptB;
+        public ComboBox lan;
+        public ComboBox lan2;
 
         private Dictionary<string, object> Shorcut = new Dictionary<string, object>()
         {
@@ -44,22 +48,51 @@ namespace CopyShot
             {"Page down", Keys.PageDown},
             {"End", Keys.End}
         };
+        private Dictionary<string, object> Language = new Dictionary<string, object>()
+        {
+            {"Afrikaans", OcrLanguage.AfrikaansBest },
+            {"Arabic", OcrLanguage.ArabicBest },
+            {"Chinese", OcrLanguage.ChineseTraditionalBest },
+            {"Danish", OcrLanguage.DanishBest },
+            {"English", OcrLanguage.EnglishBest },
+            {"Finnish", OcrLanguage.FinnishBest },
+            {"French", OcrLanguage.FrenchBest },
+            {"German", OcrLanguage.GermanBest },
+            {"Greek", OcrLanguage.GreekBest },
+            {"Hindi", OcrLanguage.HindiBest },
+            {"ltalian", OcrLanguage.ItalianBest },
+            {"Japanese", OcrLanguage.JapaneseBest },
+            {"Korean", OcrLanguage.KoreanBest },
+            {"Norwegian", OcrLanguage.NorwegianBest },
+            {"Polish", OcrLanguage.PolishBest },
+            {"Portuguese", OcrLanguage.PortugueseBest },
+            {"Russian", OcrLanguage.RussianBest },
+            {"Spanish", OcrLanguage.SpanishBest },
+            {"Swedish", OcrLanguage.SwedishBest },
+            {"Turkish", OcrLanguage.TurkishBest }
+        };
 
-
-        
+        private Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
         //#151719
         public Main()
         {
             InitializeComponent();
             mainform = this;
+
             rtb = richTextBox;
             ptB = pictureBox;
+            lan = LanguageComboBox;
+            lan2 = SecondLanguageComboBox;
+
+            LanguageComboBox.Text = config.AppSettings.Settings["FirstLanguage"].Value;
+            SecondLanguageComboBox.Text = config.AppSettings.Settings["SecondLanguage"].Value;
+            ShorcutComboBox.Text = config.AppSettings.Settings["ShorcutKey"].Value;
         }
 
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F1)
+            if (e.KeyCode == ConvertToEnum<Keys>(Shorcut[ShorcutComboBox.Text]))
             {
                 StartCapture();
             }
@@ -67,21 +100,18 @@ namespace CopyShot
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F1)
+            if (e.KeyCode == ConvertToEnum<Keys>(Shorcut[ShorcutComboBox.Text]))
             {
                 StartCapture();
             }
         }
         private void StartCapture()
         {
-            ReturnShorcutKey();
-
             File.Delete(@".\Screenshots\Capture.jpg");
             File.Delete(@".\Screenshots\FinalCapture.jpg");
-            //Photo.CaptureScreenshot();
-            //DisplayImage FormImage = new DisplayImage();
-            //FormImage.Show();
-            
+            Photo.CaptureScreenshot();
+            DisplayImage FormImage = new DisplayImage();
+            FormImage.Show();
         }
         private void Main_Activated(object sender, EventArgs e)
         {
@@ -100,21 +130,30 @@ namespace CopyShot
         private async void ReadButton_Click(object sender, EventArgs e)
         {
             pictureBox.Show();
-            await Task.Run(() => Photo.ConvertImageToText(@".\Screenshots\FinalCapture.jpg"));
+            await Task.Run(() => Photo.ConvertImageToText(@".\Screenshots\FinalCapture.jpg", Language[LanguageComboBox.Text], Language[SecondLanguageComboBox.Text]));
             pictureBox.Hide();
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
+            
+            config.AppSettings.Settings.Remove("FirstLanguage");
+            config.AppSettings.Settings.Remove("SecondLanguage");
+            config.AppSettings.Settings.Remove("ShorcutKey");
+
+            config.AppSettings.Settings.Add("FirstLanguage", LanguageComboBox.Text);
+            config.AppSettings.Settings.Add("SecondLanguage", SecondLanguageComboBox.Text);
+            config.AppSettings.Settings.Add("ShorcutKey", ShorcutComboBox.Text);
+
+            config.Save(ConfigurationSaveMode.Modified);
+
             File.Delete(@".\Screenshots\Capture.jpg");
             File.Delete(@".\Screenshots\FinalCapture.jpg");
         }
-        
-        private object ReturnShorcutKey()
+        public T ConvertToEnum<T>(object o)
         {
-            Console.WriteLine(ShorcutComboBox.Text);
-            Console.WriteLine(Shorcut[ShorcutComboBox.Text]);
-            return Shorcut[ShorcutComboBox.Text];
+            T enumVal = (T)Enum.Parse(typeof(T), o.ToString());
+            return enumVal;
         }
     }
 }

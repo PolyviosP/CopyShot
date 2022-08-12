@@ -118,6 +118,7 @@
             this.LanguageComboBox.Name = "LanguageComboBox";
             this.LanguageComboBox.Size = new System.Drawing.Size(163, 35);
             this.LanguageComboBox.TabIndex = 6;
+            this.LanguageComboBox.Text = "English";
             // 
             // SecondLanguageComboBox
             // 
@@ -150,6 +151,7 @@
             this.SecondLanguageComboBox.Name = "SecondLanguageComboBox";
             this.SecondLanguageComboBox.Size = new System.Drawing.Size(163, 35);
             this.SecondLanguageComboBox.TabIndex = 7;
+            this.SecondLanguageComboBox.Text = "English";
             // 
             // label3
             // 
@@ -168,7 +170,7 @@
             this.ShorcutComboBox.ForeColor = System.Drawing.Color.White;
             this.ShorcutComboBox.FormattingEnabled = true;
             this.ShorcutComboBox.Items.AddRange(new object[] {
-            "F1 ",
+            "F1",
             "F2",
             "F3",
             "F4",
@@ -179,27 +181,27 @@
             "F9",
             "F10",
             "F11",
-            "F12\t",
-            "Tab\t",
-            "Caps lock\t",
-            "Shift\t",
-            "Ctrl\t",
-            "Alt\t",
-            "Spacebar\t",
-            "Delete\t",
-            "Prt Scrn\t",
-            "Scroll Lock\t",
-            "Pause\t",
-            "Insert\t",
-            "Home\t",
-            "Page up\t",
-            "Page down\t",
+            "F12",
+            "Tab",
+            "Caps lock",
+            "Shift",
+            "Ctrl",
+            "Alt",
+            "Spacebar",
+            "Delete",
+            "Prt Scrn",
+            "Scroll Lock",
+            "Pause",
+            "Insert",
+            "Home",
+            "Page up",
+            "Page down",
             "End"});
             this.ShorcutComboBox.Location = new System.Drawing.Point(740, 395);
             this.ShorcutComboBox.Name = "ShorcutComboBox";
             this.ShorcutComboBox.Size = new System.Drawing.Size(163, 35);
             this.ShorcutComboBox.TabIndex = 9;
-            this.ShorcutComboBox.Text = "F1 ";
+            this.ShorcutComboBox.Text = "F1";
             // 
             // ReadButton
             // 

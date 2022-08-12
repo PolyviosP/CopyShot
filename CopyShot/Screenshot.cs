@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -10,6 +11,7 @@ namespace CopyShot
 {
     internal class Screenshot
     {
+
         public void CaptureScreenshotBox(string path, int x, int y, int width, int height)
         {
             try
@@ -58,7 +60,7 @@ namespace CopyShot
             }
         }
 
-        public string ConvertImageToText(string path)
+        public string ConvertImageToText(string path, object lan, object lan2)
         {
             string ImgText = "";
             try
@@ -67,8 +69,10 @@ namespace CopyShot
                 using (var Input = new OcrInput(path))
                 {
                     //Input.Deskew();
-                    Ocr.Language = OcrLanguage.GreekBest;
-                    Ocr.AddSecondaryLanguage(OcrLanguage.EnglishBest);
+                    //Console.WriteLine(lan+" "+ lan2);
+                    Ocr.Language = ConvertToEnum<OcrLanguage>(lan);
+                    Ocr.AddSecondaryLanguage(ConvertToEnum<OcrLanguage>(lan2));
+
                     var Text = Ocr.Read(Input);
                     ImgText = Text.Text;
                     return ImgText;
@@ -81,7 +85,11 @@ namespace CopyShot
                 return ImgText;
             }
         }
-
+        public T ConvertToEnum<T>(object o)
+        {
+            T enumVal = (T)Enum.Parse(typeof(T), o.ToString());
+            return enumVal;
+        }
 
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
         public static extern int GetDeviceCaps(IntPtr hDC, int nIndex);

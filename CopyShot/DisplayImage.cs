@@ -83,13 +83,15 @@ namespace CopyShot
             else if (e.KeyChar == 3)
             {
                 string text = "";
+                string lan = Main.mainform.lan.Text;
+                string lan2 = Main.mainform.lan2.Text;
                 Main.mainform.ptB.Show();
                 this.Hide();
 
                 await Task.Run(() => 
                 { 
                     Photo.CaptureScreenshotBox(@".\Screenshots\FinalCapture.jpg", Rect.Location.X, Rect.Location.Y, Rect.Size.Width, Rect.Size.Height);
-                    text = Photo.ConvertImageToText(@".\Screenshots\FinalCapture.jpg");
+                    text = Photo.ConvertImageToText(@".\Screenshots\FinalCapture.jpg", lan, lan2);
                 });
 
                 //File.Delete(@".\Screenshots\Capture.jpg");
