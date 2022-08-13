@@ -80,7 +80,7 @@ namespace CopyShot
                 //File.Delete(@".\Screenshots\Capture.jpg");
                 this.Dispose();
             }
-            else if (e.KeyChar == 3)
+            else if (e.KeyChar == (char)Keys.Enter)
             {
                 string text = "";
                 string lan = Main.mainform.lan.Text;
@@ -109,7 +109,7 @@ namespace CopyShot
             {
                 if (Rect.Contains(e.Location))
                 {
-                    Console.WriteLine("Right click");
+                    //Console.WriteLine("Right click");
                 }
                 
             }

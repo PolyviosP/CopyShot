@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using IronOcr;
+using Tesseract;
 
 namespace CopyShot
 {
@@ -25,7 +25,7 @@ namespace CopyShot
                 //Copying Image from The Screen
                 captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
                 //Saving the Image File (I am here Saving it in My E drive).
-                captureBitmap.Save(path, ImageFormat.Jpeg);
+                captureBitmap.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             catch (Exception ex)
             {
@@ -52,7 +52,7 @@ namespace CopyShot
                 //Copying Image from The Screen
                 captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
                 //Saving the Image File (I am here Saving it in My E drive).
-                captureBitmap.Save(@".\Screenshots\Capture.jpg", ImageFormat.Jpeg);
+                captureBitmap.Save(@".\Screenshots\Capture.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             catch (Exception ex)
             {
@@ -62,27 +62,20 @@ namespace CopyShot
 
         public string ConvertImageToText(string path, object lan, object lan2)
         {
-            string ImgText = "";
             try
             {
-                var Ocr = new IronTesseract();
-                using (var Input = new OcrInput(path))
+                using (var ocrengine = new TesseractEngine(@".\tessdata", "eng", EngineMode.Default))
                 {
-                    //Input.Deskew();
-                    //Console.WriteLine(lan+" "+ lan2);
-                    Ocr.Language = ConvertToEnum<OcrLanguage>(lan);
-                    Ocr.AddSecondaryLanguage(ConvertToEnum<OcrLanguage>(lan2));
-
-                    var Text = Ocr.Read(Input);
-                    ImgText = Text.Text;
-                    return ImgText;
+                    var img = Pix.LoadFromFile(path);
+                    var res = ocrengine.Process(img);
+                    return res.GetText();
                 }
             }
-            catch (FileNotFoundException){ return ImgText; }
+            catch (FileNotFoundException){ return ""; }
             catch 
             {
                 MessageBox.Show("We can't convert the text!", "Copyshot", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return ImgText;
+                return "";
             }
         }
         public T ConvertToEnum<T>(object o)

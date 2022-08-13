@@ -39,6 +39,7 @@
             this.ShorcutComboBox = new System.Windows.Forms.ComboBox();
             this.ReadButton = new ePOSOne.btnProduct.Button_WOC();
             this.CopyButton = new ePOSOne.btnProduct.Button_WOC();
+            this.TakeShotButton = new ePOSOne.btnProduct.Button_WOC();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,6 @@
             this.richTextBox.Size = new System.Drawing.Size(415, 420);
             this.richTextBox.TabIndex = 0;
             this.richTextBox.Text = "";
-            this.richTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             // 
             // pictureBox
             // 
@@ -71,7 +71,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(496, 291);
+            this.label1.Location = new System.Drawing.Point(496, 347);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(204, 27);
             this.label1.TabIndex = 4;
@@ -81,7 +81,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(496, 343);
+            this.label2.Location = new System.Drawing.Point(496, 399);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(236, 27);
             this.label2.TabIndex = 5;
@@ -90,6 +90,7 @@
             // LanguageComboBox
             // 
             this.LanguageComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LanguageComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LanguageComboBox.ForeColor = System.Drawing.Color.White;
             this.LanguageComboBox.FormattingEnabled = true;
@@ -104,9 +105,9 @@
             "German",
             "Greek",
             "Hindi",
-            "ltalian",
             "Japanese",
             "Korean",
+            "ltalian",
             "Norwegian",
             "Polish",
             "Portuguese",
@@ -114,15 +115,16 @@
             "Spanish",
             "Swedish",
             "Turkish"});
-            this.LanguageComboBox.Location = new System.Drawing.Point(740, 288);
+            this.LanguageComboBox.Location = new System.Drawing.Point(740, 344);
             this.LanguageComboBox.Name = "LanguageComboBox";
             this.LanguageComboBox.Size = new System.Drawing.Size(163, 35);
+            this.LanguageComboBox.Sorted = true;
             this.LanguageComboBox.TabIndex = 6;
-            this.LanguageComboBox.Text = "English";
             // 
             // SecondLanguageComboBox
             // 
             this.SecondLanguageComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.SecondLanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SecondLanguageComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SecondLanguageComboBox.ForeColor = System.Drawing.Color.White;
             this.SecondLanguageComboBox.FormattingEnabled = true;
@@ -137,9 +139,9 @@
             "German",
             "Greek",
             "Hindi",
-            "ltalian",
             "Japanese",
             "Korean",
+            "ltalian",
             "Norwegian",
             "Polish",
             "Portuguese",
@@ -147,17 +149,17 @@
             "Spanish",
             "Swedish",
             "Turkish"});
-            this.SecondLanguageComboBox.Location = new System.Drawing.Point(740, 340);
+            this.SecondLanguageComboBox.Location = new System.Drawing.Point(740, 396);
             this.SecondLanguageComboBox.Name = "SecondLanguageComboBox";
             this.SecondLanguageComboBox.Size = new System.Drawing.Size(163, 35);
+            this.SecondLanguageComboBox.Sorted = true;
             this.SecondLanguageComboBox.TabIndex = 7;
-            this.SecondLanguageComboBox.Text = "English";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(496, 398);
+            this.label3.Location = new System.Drawing.Point(496, 454);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 27);
             this.label3.TabIndex = 8;
@@ -166,6 +168,7 @@
             // ShorcutComboBox
             // 
             this.ShorcutComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.ShorcutComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ShorcutComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ShorcutComboBox.ForeColor = System.Drawing.Color.White;
             this.ShorcutComboBox.FormattingEnabled = true;
@@ -197,27 +200,31 @@
             "Page up",
             "Page down",
             "End"});
-            this.ShorcutComboBox.Location = new System.Drawing.Point(740, 395);
+            this.ShorcutComboBox.Location = new System.Drawing.Point(740, 451);
             this.ShorcutComboBox.Name = "ShorcutComboBox";
             this.ShorcutComboBox.Size = new System.Drawing.Size(163, 35);
             this.ShorcutComboBox.TabIndex = 9;
-            this.ShorcutComboBox.Text = "F1";
             // 
             // ReadButton
             // 
+            this.ReadButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ReadButton.BorderColor = System.Drawing.Color.RoyalBlue;
             this.ReadButton.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
             this.ReadButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ReadButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.ReadButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.ReadButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
             this.ReadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReadButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReadButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
-            this.ReadButton.Location = new System.Drawing.Point(598, 164);
+            this.ReadButton.Location = new System.Drawing.Point(598, 159);
             this.ReadButton.Name = "ReadButton";
             this.ReadButton.OnHoverBorderColor = System.Drawing.Color.RoyalBlue;
             this.ReadButton.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
             this.ReadButton.OnHoverTextColor = System.Drawing.Color.RoyalBlue;
             this.ReadButton.Size = new System.Drawing.Size(285, 73);
             this.ReadButton.TabIndex = 2;
+            this.ReadButton.TabStop = false;
             this.ReadButton.Text = "Read again";
             this.ReadButton.TextColor = System.Drawing.Color.White;
             this.ReadButton.UseVisualStyleBackColor = false;
@@ -228,6 +235,9 @@
             this.CopyButton.BorderColor = System.Drawing.Color.RoyalBlue;
             this.CopyButton.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
             this.CopyButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CopyButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.CopyButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.CopyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
             this.CopyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CopyButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CopyButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
@@ -243,6 +253,31 @@
             this.CopyButton.UseVisualStyleBackColor = false;
             this.CopyButton.Click += new System.EventHandler(this.CopyButton_Click);
             // 
+            // TakeShotButton
+            // 
+            this.TakeShotButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TakeShotButton.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.TakeShotButton.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.TakeShotButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TakeShotButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.TakeShotButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.TakeShotButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.TakeShotButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TakeShotButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TakeShotButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.TakeShotButton.Location = new System.Drawing.Point(598, 254);
+            this.TakeShotButton.Name = "TakeShotButton";
+            this.TakeShotButton.OnHoverBorderColor = System.Drawing.Color.RoyalBlue;
+            this.TakeShotButton.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.TakeShotButton.OnHoverTextColor = System.Drawing.Color.RoyalBlue;
+            this.TakeShotButton.Size = new System.Drawing.Size(285, 73);
+            this.TakeShotButton.TabIndex = 10;
+            this.TakeShotButton.TabStop = false;
+            this.TakeShotButton.Text = "Take Shot";
+            this.TakeShotButton.TextColor = System.Drawing.Color.White;
+            this.TakeShotButton.UseVisualStyleBackColor = false;
+            this.TakeShotButton.Click += new System.EventHandler(this.TakeShotButton_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 27F);
@@ -250,6 +285,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
             this.ClientSize = new System.Drawing.Size(978, 544);
+            this.Controls.Add(this.TakeShotButton);
             this.Controls.Add(this.ShorcutComboBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.SecondLanguageComboBox);
@@ -263,11 +299,11 @@
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Copyshot";
-            this.Activated += new System.EventHandler(this.Main_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
@@ -287,6 +323,7 @@
         private System.Windows.Forms.ComboBox ShorcutComboBox;
         public System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.RichTextBox richTextBox;
+        private ePOSOne.btnProduct.Button_WOC TakeShotButton;
     }
 }
 

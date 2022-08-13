@@ -1,9 +1,7 @@
-﻿using IronOcr;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,7 +16,7 @@ namespace CopyShot
         public ComboBox lan;
         public ComboBox lan2;
 
-        private Dictionary<string, object> Shorcut = new Dictionary<string, object>()
+        /*private Dictionary<string, object> Shorcut = new Dictionary<string, object>()
         {
             {"F1", Keys.F1},
             {"F2", Keys.F2},
@@ -47,8 +45,8 @@ namespace CopyShot
             {"Page up", Keys.PageUp},
             {"Page down", Keys.PageDown},
             {"End", Keys.End}
-        };
-        private Dictionary<string, object> Language = new Dictionary<string, object>()
+        };*/
+        /*private Dictionary<string, object> Language = new Dictionary<string, object>()
         {
             {"Afrikaans", OcrLanguage.AfrikaansBest },
             {"Arabic", OcrLanguage.ArabicBest },
@@ -70,7 +68,7 @@ namespace CopyShot
             {"Spanish", OcrLanguage.SpanishBest },
             {"Swedish", OcrLanguage.SwedishBest },
             {"Turkish", OcrLanguage.TurkishBest }
-        };
+        };*/
 
         private Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
@@ -79,7 +77,6 @@ namespace CopyShot
         {
             InitializeComponent();
             mainform = this;
-
             rtb = richTextBox;
             ptB = pictureBox;
             lan = LanguageComboBox;
@@ -92,19 +89,16 @@ namespace CopyShot
 
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == ConvertToEnum<Keys>(Shorcut[ShorcutComboBox.Text]))
+            try
             {
-                StartCapture();
+                if (e.KeyCode == ConvertToEnum<Keys>(ShorcutComboBox.Text))
+                {
+                    StartCapture();
+                }
             }
+            catch { }
         }
 
-        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == ConvertToEnum<Keys>(Shorcut[ShorcutComboBox.Text]))
-            {
-                StartCapture();
-            }
-        }
         private void StartCapture()
         {
             File.Delete(@".\Screenshots\Capture.jpg");
@@ -113,9 +107,10 @@ namespace CopyShot
             DisplayImage FormImage = new DisplayImage();
             FormImage.Show();
         }
-        private void Main_Activated(object sender, EventArgs e)
+
+        private void TakeShotButton_Click(object sender, EventArgs e)
         {
-             
+            StartCapture();
         }
 
         private void CopyButton_Click(object sender, EventArgs e)
