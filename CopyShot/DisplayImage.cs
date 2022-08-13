@@ -77,7 +77,6 @@ namespace CopyShot
                 this.Hide();
                 pictureBox.Image.Dispose();
                 pictureBox.Image = null;
-                //File.Delete(@".\Screenshots\Capture.jpg");
                 this.Dispose();
             }
             else if (e.KeyChar == (char)Keys.Enter)
@@ -94,7 +93,6 @@ namespace CopyShot
                     text = Photo.ConvertImageToText(@".\Screenshots\FinalCapture.jpg", lan, lan2);
                 });
 
-                //File.Delete(@".\Screenshots\Capture.jpg");
                 pictureBox.Image.Dispose();
                 pictureBox.Image = null;
                 this.Dispose();

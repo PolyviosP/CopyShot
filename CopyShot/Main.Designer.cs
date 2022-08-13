@@ -37,9 +37,9 @@
             this.SecondLanguageComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ShorcutComboBox = new System.Windows.Forms.ComboBox();
+            this.TakeShotButton = new ePOSOne.btnProduct.Button_WOC();
             this.ReadButton = new ePOSOne.btnProduct.Button_WOC();
             this.CopyButton = new ePOSOne.btnProduct.Button_WOC();
-            this.TakeShotButton = new ePOSOne.btnProduct.Button_WOC();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,27 +94,119 @@
             this.LanguageComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LanguageComboBox.ForeColor = System.Drawing.Color.White;
             this.LanguageComboBox.FormattingEnabled = true;
+            this.LanguageComboBox.ItemHeight = 27;
             this.LanguageComboBox.Items.AddRange(new object[] {
             "Afrikaans",
+            "Albanian",
+            "Amharic",
             "Arabic",
+            "Armenian",
+            "Assamese",
+            "Azerbaijani",
+            "Basque",
+            "Belarusian",
+            "Bengali",
+            "Bosnian",
+            "Breton",
+            "Bulgarian",
+            "Burmese",
+            "Catalan",
+            "Cebuano",
+            "Central",
+            "Cherokee",
             "Chinese",
+            "Corsican",
+            "Croatian",
+            "Czech",
             "Danish",
+            "Dutch",
+            "Dzongkha",
             "English",
+            "Esperanto",
+            "Estonian",
+            "Faroese",
+            "Filipino",
             "Finnish",
             "French",
+            "Galician",
+            "Georgian",
+            "German",
             "German",
             "Greek",
+            "Gujarati",
+            "Haitian",
+            "Hebrew",
             "Hindi",
+            "Hungarian",
+            "Icelandic",
+            "Indonesian",
+            "Inuktitut",
+            "Irish",
+            "Italian",
             "Japanese",
+            "Javanese",
+            "Kannada",
+            "Kazakh",
+            "Kirghiz",
             "Korean",
-            "ltalian",
+            "Kurdish",
+            "Kurmanji",
+            "Lao",
+            "Latin",
+            "Latvian",
+            "Lithuanian",
+            "Luxembourgish",
+            "Macedonian",
+            "Malay",
+            "Malayalam",
+            "Maltese",
+            "Maori",
+            "Marathi",
+            "Mongolian",
+            "Nepali",
             "Norwegian",
+            "Occitan",
+            "Orientation",
+            "Oriya",
+            "Panjabi",
+            "Persian",
             "Polish",
             "Portuguese",
+            "Pushto",
+            "Quechua",
+            "Romanian",
             "Russian",
+            "Sanskrit",
+            "Scottish",
+            "Serbian",
+            "Sindhi",
+            "Sinhala",
+            "Slovak",
+            "Slovenian",
             "Spanish",
+            "Sundanese",
+            "Swahili",
             "Swedish",
-            "Turkish"});
+            "Syriac",
+            "Tagalog",
+            "Tajik",
+            "Tamil",
+            "Tatar",
+            "Telugu",
+            "Thai",
+            "Tibetan",
+            "Tigrinya",
+            "Tonga",
+            "Turkish",
+            "Uighur",
+            "Ukrainian",
+            "Urdu",
+            "Uzbek",
+            "Vietnamese",
+            "Welsh",
+            "Western",
+            "Yiddish",
+            "Yoruba"});
             this.LanguageComboBox.Location = new System.Drawing.Point(740, 344);
             this.LanguageComboBox.Name = "LanguageComboBox";
             this.LanguageComboBox.Size = new System.Drawing.Size(163, 35);
@@ -128,27 +220,119 @@
             this.SecondLanguageComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SecondLanguageComboBox.ForeColor = System.Drawing.Color.White;
             this.SecondLanguageComboBox.FormattingEnabled = true;
+            this.SecondLanguageComboBox.ItemHeight = 27;
             this.SecondLanguageComboBox.Items.AddRange(new object[] {
             "Afrikaans",
+            "Albanian",
+            "Amharic",
             "Arabic",
+            "Armenian",
+            "Assamese",
+            "Azerbaijani",
+            "Basque",
+            "Belarusian",
+            "Bengali",
+            "Bosnian",
+            "Breton",
+            "Bulgarian",
+            "Burmese",
+            "Catalan",
+            "Cebuano",
+            "Central",
+            "Cherokee",
             "Chinese",
+            "Corsican",
+            "Croatian",
+            "Czech",
             "Danish",
+            "Dutch",
+            "Dzongkha",
             "English",
+            "Esperanto",
+            "Estonian",
+            "Faroese",
+            "Filipino",
             "Finnish",
             "French",
+            "Galician",
+            "Georgian",
+            "German",
             "German",
             "Greek",
+            "Gujarati",
+            "Haitian",
+            "Hebrew",
             "Hindi",
+            "Hungarian",
+            "Icelandic",
+            "Indonesian",
+            "Inuktitut",
+            "Irish",
+            "Italian",
             "Japanese",
+            "Javanese",
+            "Kannada",
+            "Kazakh",
+            "Kirghiz",
             "Korean",
-            "ltalian",
+            "Kurdish",
+            "Kurmanji",
+            "Lao",
+            "Latin",
+            "Latvian",
+            "Lithuanian",
+            "Luxembourgish",
+            "Macedonian",
+            "Malay",
+            "Malayalam",
+            "Maltese",
+            "Maori",
+            "Marathi",
+            "Mongolian",
+            "Nepali",
             "Norwegian",
+            "Occitan",
+            "Orientation",
+            "Oriya",
+            "Panjabi",
+            "Persian",
             "Polish",
             "Portuguese",
+            "Pushto",
+            "Quechua",
+            "Romanian",
             "Russian",
+            "Sanskrit",
+            "Scottish",
+            "Serbian",
+            "Sindhi",
+            "Sinhala",
+            "Slovak",
+            "Slovenian",
             "Spanish",
+            "Sundanese",
+            "Swahili",
             "Swedish",
-            "Turkish"});
+            "Syriac",
+            "Tagalog",
+            "Tajik",
+            "Tamil",
+            "Tatar",
+            "Telugu",
+            "Thai",
+            "Tibetan",
+            "Tigrinya",
+            "Tonga",
+            "Turkish",
+            "Uighur",
+            "Ukrainian",
+            "Urdu",
+            "Uzbek",
+            "Vietnamese",
+            "Welsh",
+            "Western",
+            "Yiddish",
+            "Yoruba"});
             this.SecondLanguageComboBox.Location = new System.Drawing.Point(740, 396);
             this.SecondLanguageComboBox.Name = "SecondLanguageComboBox";
             this.SecondLanguageComboBox.Size = new System.Drawing.Size(163, 35);
@@ -172,6 +356,7 @@
             this.ShorcutComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ShorcutComboBox.ForeColor = System.Drawing.Color.White;
             this.ShorcutComboBox.FormattingEnabled = true;
+            this.ShorcutComboBox.ItemHeight = 27;
             this.ShorcutComboBox.Items.AddRange(new object[] {
             "F1",
             "F2",
@@ -204,6 +389,31 @@
             this.ShorcutComboBox.Name = "ShorcutComboBox";
             this.ShorcutComboBox.Size = new System.Drawing.Size(163, 35);
             this.ShorcutComboBox.TabIndex = 9;
+            // 
+            // TakeShotButton
+            // 
+            this.TakeShotButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TakeShotButton.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.TakeShotButton.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.TakeShotButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TakeShotButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.TakeShotButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.TakeShotButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.TakeShotButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TakeShotButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TakeShotButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.TakeShotButton.Location = new System.Drawing.Point(598, 254);
+            this.TakeShotButton.Name = "TakeShotButton";
+            this.TakeShotButton.OnHoverBorderColor = System.Drawing.Color.RoyalBlue;
+            this.TakeShotButton.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
+            this.TakeShotButton.OnHoverTextColor = System.Drawing.Color.RoyalBlue;
+            this.TakeShotButton.Size = new System.Drawing.Size(285, 73);
+            this.TakeShotButton.TabIndex = 10;
+            this.TakeShotButton.TabStop = false;
+            this.TakeShotButton.Text = "Take Shot";
+            this.TakeShotButton.TextColor = System.Drawing.Color.White;
+            this.TakeShotButton.UseVisualStyleBackColor = false;
+            this.TakeShotButton.Click += new System.EventHandler(this.TakeShotButton_Click);
             // 
             // ReadButton
             // 
@@ -252,31 +462,6 @@
             this.CopyButton.TextColor = System.Drawing.Color.White;
             this.CopyButton.UseVisualStyleBackColor = false;
             this.CopyButton.Click += new System.EventHandler(this.CopyButton_Click);
-            // 
-            // TakeShotButton
-            // 
-            this.TakeShotButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.TakeShotButton.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.TakeShotButton.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
-            this.TakeShotButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.TakeShotButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
-            this.TakeShotButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
-            this.TakeShotButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
-            this.TakeShotButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TakeShotButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TakeShotButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
-            this.TakeShotButton.Location = new System.Drawing.Point(598, 254);
-            this.TakeShotButton.Name = "TakeShotButton";
-            this.TakeShotButton.OnHoverBorderColor = System.Drawing.Color.RoyalBlue;
-            this.TakeShotButton.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
-            this.TakeShotButton.OnHoverTextColor = System.Drawing.Color.RoyalBlue;
-            this.TakeShotButton.Size = new System.Drawing.Size(285, 73);
-            this.TakeShotButton.TabIndex = 10;
-            this.TakeShotButton.TabStop = false;
-            this.TakeShotButton.Text = "Take Shot";
-            this.TakeShotButton.TextColor = System.Drawing.Color.White;
-            this.TakeShotButton.UseVisualStyleBackColor = false;
-            this.TakeShotButton.Click += new System.EventHandler(this.TakeShotButton_Click);
             // 
             // Main
             // 

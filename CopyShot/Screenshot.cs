@@ -11,7 +11,119 @@ namespace CopyShot
 {
     internal class Screenshot
     {
-
+        public Dictionary<string, string> Language = new Dictionary<string, string>()
+        {
+            {"Afrikaans", "afr"},
+            {"Amharic", "amh"},
+            {"Arabic", "ara"},
+            {"Assamese", "asm"},
+            {"Azerbaijani", "aze"},
+            {"Belarusian", "bel"},
+            {"Bengali", "ben"},
+            {"Tibetan", "bod"},
+            {"Bosnian", "bos"},
+            {"Breton", "bre"},
+            {"Bulgarian", "bul"},
+            {"Catalan", "cat"},
+            {"Cebuano", "ceb"},
+            {"Czech", "ces"},
+            {"Chinese", "chi_tra"},
+            {"Cherokee", "chr"},
+            {"Corsican", "cos"},
+            {"Welsh", "cym"},
+            {"Danish", "dan"},
+            {"German", "deu"},
+            {"Dzongkha", "dzo"},
+            {"Greek", "grc"},
+            {"English", "fra"},
+            {"Esperanto", "epo"},
+            {"Estonian", "est"},
+            {"Basque", "eus"},
+            {"Faroese", "fao"},
+            {"Persian", "fas"},
+            {"Filipino", "fil"},
+            {"Finnish", "fin"},
+            {"French", "fra"},
+            {"Western", "fry"},
+            {"Scottish", "gla"},
+            {"Irish", "gle"},
+            {"Galician", "glg"},
+            {"Gujarati", "guj"},
+            {"Haitian", "hat"},
+            {"Hebrew", "heb"},
+            {"Hindi", "hin"},
+            {"Croatian", "hrv"},
+            {"Hungarian", "hun"},
+            {"Armenian", "hye"},
+            {"Inuktitut", "iku"},
+            {"Indonesian", "ind"},
+            {"Icelandic", "isl"},
+            {"Italian", "ita"},
+            {"Javanese", "jav"},
+            {"Japanese", "jpn"},
+            {"Kannada", "kan"},
+            {"Georgian", "kat"},
+            {"Kazakh", "kaz"},
+            {"Central", "khm"},
+            {"Kirghiz", "kir"},
+            {"Kurmanji", "kmr"},
+            {"Korean", "kor"},
+            {"Kurdish", "kur"},
+            {"Lao", "lao"},
+            {"Latin", "lat"},
+            {"Latvian", "lav"},
+            {"Lithuanian", "lit"},
+            {"Luxembourgish", "ltz"},
+            {"Malayalam", "mal"},
+            {"Marathi", "mar"},
+            {"Macedonian", "mkd"},
+            {"Maltese", "mlt"},
+            {"Mongolian", "mon"},
+            {"Maori", "mri"},
+            {"Malay", "msa"},
+            {"Burmese", "mya"},
+            {"Nepali", "nep"},
+            {"Dutch", "nld"},
+            {"Norwegian", "nor"},
+            {"Occitan", "oci"},
+            {"Oriya", "ori"},
+            {"Orientation", "osd"},
+            {"Panjabi", "pan"},
+            {"Polish", "pol"},
+            {"Portuguese", "por"},
+            {"Pushto", "pus"},
+            {"Quechua", "que"},
+            {"Romanian", "ron"},
+            {"Russian", "rus"},
+            {"Sanskrit", "san"},
+            {"Sinhala", "sin"},
+            {"Slovak", "slk"},
+            {"Slovenian", "slv"},
+            {"Sindhi", "snd"},
+            {"Spanish", "spa"},
+            {"Albanian", "sqi"},
+            {"Serbian", "srp"},
+            {"Sundanese", "sun"},
+            {"Swahili", "swa"},
+            {"Swedish", "swe"},
+            {"Syriac", "syr"},
+            {"Tamil", "tam"},
+            {"Tatar", "tat"},
+            {"Telugu", "tel"},
+            {"Tajik", "tgk"},
+            {"Tagalog", "tgl"},
+            {"Thai", "tha"},
+            {"Tigrinya", "tir"},
+            {"Tonga", "ton"},
+            {"Turkish", "tur"},
+            {"Uighur", "uig"},
+            {"Ukrainian", "ukr"},
+            {"Urdu", "urd"},
+            {"Uzbek", "uzb"},
+            {"Vietnamese", "vie"},
+            {"Yiddish", "yid"},
+            {"Yoruba", "yor"}
+        };
         public void CaptureScreenshotBox(string path, int x, int y, int width, int height)
         {
             try
@@ -60,11 +172,11 @@ namespace CopyShot
             }
         }
 
-        public string ConvertImageToText(string path, object lan, object lan2)
+        public string ConvertImageToText(string path, string lan, string lan2)
         {
             try
             {
-                using (var ocrengine = new TesseractEngine(@".\tessdata", "eng", EngineMode.Default))
+                using (var ocrengine = new TesseractEngine(@".\tessdata", Language[lan] + "+"+ Language[lan2], EngineMode.Default))
                 {
                     var img = Pix.LoadFromFile(path);
                     var res = ocrengine.Process(img);
@@ -77,11 +189,6 @@ namespace CopyShot
                 MessageBox.Show("We can't convert the text!", "Copyshot", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "";
             }
-        }
-        public T ConvertToEnum<T>(object o)
-        {
-            T enumVal = (T)Enum.Parse(typeof(T), o.ToString());
-            return enumVal;
         }
 
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
@@ -125,4 +232,3 @@ namespace CopyShot
         }
     }    
 }
-

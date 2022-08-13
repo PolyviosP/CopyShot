@@ -46,29 +46,6 @@ namespace CopyShot
             {"Page down", Keys.PageDown},
             {"End", Keys.End}
         };*/
-        /*private Dictionary<string, object> Language = new Dictionary<string, object>()
-        {
-            {"Afrikaans", OcrLanguage.AfrikaansBest },
-            {"Arabic", OcrLanguage.ArabicBest },
-            {"Chinese", OcrLanguage.ChineseTraditionalBest },
-            {"Danish", OcrLanguage.DanishBest },
-            {"English", OcrLanguage.EnglishBest },
-            {"Finnish", OcrLanguage.FinnishBest },
-            {"French", OcrLanguage.FrenchBest },
-            {"German", OcrLanguage.GermanBest },
-            {"Greek", OcrLanguage.GreekBest },
-            {"Hindi", OcrLanguage.HindiBest },
-            {"ltalian", OcrLanguage.ItalianBest },
-            {"Japanese", OcrLanguage.JapaneseBest },
-            {"Korean", OcrLanguage.KoreanBest },
-            {"Norwegian", OcrLanguage.NorwegianBest },
-            {"Polish", OcrLanguage.PolishBest },
-            {"Portuguese", OcrLanguage.PortugueseBest },
-            {"Russian", OcrLanguage.RussianBest },
-            {"Spanish", OcrLanguage.SpanishBest },
-            {"Swedish", OcrLanguage.SwedishBest },
-            {"Turkish", OcrLanguage.TurkishBest }
-        };*/
 
         private Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
@@ -101,8 +78,6 @@ namespace CopyShot
 
         private void StartCapture()
         {
-            File.Delete(@".\Screenshots\Capture.jpg");
-            File.Delete(@".\Screenshots\FinalCapture.jpg");
             Photo.CaptureScreenshot();
             DisplayImage FormImage = new DisplayImage();
             FormImage.Show();
@@ -124,14 +99,17 @@ namespace CopyShot
 
         private async void ReadButton_Click(object sender, EventArgs e)
         {
-            string l = LanguageComboBox.Text;
-            string l2 = SecondLanguageComboBox.Text;
-            string text = "";
+            if (File.Exists(@".\Screenshots\FinalCapture.jpg"))
+            {
+                string l = LanguageComboBox.Text;
+                string l2 = SecondLanguageComboBox.Text;
+                string text = "";
 
-            pictureBox.Show();
-            await Task.Run(() => text = Photo.ConvertImageToText(@".\Screenshots\FinalCapture.jpg", l, l2));
-            pictureBox.Hide();
-            richTextBox.Text = text;
+                pictureBox.Show();
+                await Task.Run(() => text = Photo.ConvertImageToText(@".\Screenshots\FinalCapture.jpg", l, l2));
+                pictureBox.Hide();
+                richTextBox.Text = text;
+            }
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
