@@ -50,7 +50,7 @@
             this.richTextBox.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.richTextBox.Location = new System.Drawing.Point(62, 63);
             this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(415, 420);
+            this.richTextBox.Size = new System.Drawing.Size(722, 715);
             this.richTextBox.TabIndex = 0;
             this.richTextBox.Text = "";
             // 
@@ -59,7 +59,7 @@
             this.pictureBox.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox.ErrorImage")));
             this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
             this.pictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox.InitialImage")));
-            this.pictureBox.Location = new System.Drawing.Point(501, 175);
+            this.pictureBox.Location = new System.Drawing.Point(841, 203);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(73, 57);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -71,7 +71,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(496, 347);
+            this.label1.Location = new System.Drawing.Point(836, 423);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(204, 27);
             this.label1.TabIndex = 4;
@@ -81,7 +81,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(496, 399);
+            this.label2.Location = new System.Drawing.Point(836, 495);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(236, 27);
             this.label2.TabIndex = 5;
@@ -207,7 +207,7 @@
             "Western",
             "Yiddish",
             "Yoruba"});
-            this.LanguageComboBox.Location = new System.Drawing.Point(740, 344);
+            this.LanguageComboBox.Location = new System.Drawing.Point(1080, 420);
             this.LanguageComboBox.Name = "LanguageComboBox";
             this.LanguageComboBox.Size = new System.Drawing.Size(163, 35);
             this.LanguageComboBox.Sorted = true;
@@ -333,7 +333,7 @@
             "Western",
             "Yiddish",
             "Yoruba"});
-            this.SecondLanguageComboBox.Location = new System.Drawing.Point(740, 396);
+            this.SecondLanguageComboBox.Location = new System.Drawing.Point(1080, 492);
             this.SecondLanguageComboBox.Name = "SecondLanguageComboBox";
             this.SecondLanguageComboBox.Size = new System.Drawing.Size(163, 35);
             this.SecondLanguageComboBox.Sorted = true;
@@ -343,7 +343,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(496, 454);
+            this.label3.Location = new System.Drawing.Point(836, 571);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 27);
             this.label3.TabIndex = 8;
@@ -385,7 +385,7 @@
             "Page up",
             "Page down",
             "End"});
-            this.ShorcutComboBox.Location = new System.Drawing.Point(740, 451);
+            this.ShorcutComboBox.Location = new System.Drawing.Point(1080, 568);
             this.ShorcutComboBox.Name = "ShorcutComboBox";
             this.ShorcutComboBox.Size = new System.Drawing.Size(163, 35);
             this.ShorcutComboBox.TabIndex = 9;
@@ -402,7 +402,7 @@
             this.TakeShotButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TakeShotButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TakeShotButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
-            this.TakeShotButton.Location = new System.Drawing.Point(598, 254);
+            this.TakeShotButton.Location = new System.Drawing.Point(958, 302);
             this.TakeShotButton.Name = "TakeShotButton";
             this.TakeShotButton.OnHoverBorderColor = System.Drawing.Color.RoyalBlue;
             this.TakeShotButton.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
@@ -427,7 +427,7 @@
             this.ReadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReadButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReadButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
-            this.ReadButton.Location = new System.Drawing.Point(598, 159);
+            this.ReadButton.Location = new System.Drawing.Point(958, 187);
             this.ReadButton.Name = "ReadButton";
             this.ReadButton.OnHoverBorderColor = System.Drawing.Color.RoyalBlue;
             this.ReadButton.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
@@ -451,7 +451,7 @@
             this.CopyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CopyButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CopyButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
-            this.CopyButton.Location = new System.Drawing.Point(598, 63);
+            this.CopyButton.Location = new System.Drawing.Point(958, 63);
             this.CopyButton.Name = "CopyButton";
             this.CopyButton.OnHoverBorderColor = System.Drawing.Color.RoyalBlue;
             this.CopyButton.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
@@ -469,7 +469,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(15)))), ((int)(((byte)(17)))));
-            this.ClientSize = new System.Drawing.Size(978, 544);
+            this.ClientSize = new System.Drawing.Size(1378, 844);
             this.Controls.Add(this.TakeShotButton);
             this.Controls.Add(this.ShorcutComboBox);
             this.Controls.Add(this.label3);
@@ -486,6 +486,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Copyshot";
